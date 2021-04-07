@@ -34,3 +34,5 @@ typedef struct GNode  //图节点
 
  typedef PtrToGNode LGraph;
 
+ oooo
+
