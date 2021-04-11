@@ -11,4 +11,8 @@ cstdlib
 -
 cstdio
 -
+iostream
+-
+string.h
+-
 
