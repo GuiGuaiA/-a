@@ -7,12 +7,16 @@
 #IncludeRegexTransform: 
 
 E:/ClionProject/Data_structure/main.cpp
-cstdlib
+stdio.h
 -
-cstdio
+stdlib.h
+-
+fstream
 -
 iostream
 -
-string.h
--
+string
+E:/ClionProject/Data_structure/string
+vector
+E:/ClionProject/Data_structure/vector
 
