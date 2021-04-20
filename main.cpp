@@ -2,8 +2,8 @@
 #include<stdlib.h>
 #include <fstream>
 #include <iostream>
-#include "string"
-#include "vector"
+#include <string>
+#include <vector>
 
 #define MaxVertexNum 750    //最大顶点数
 
@@ -138,27 +138,29 @@ void Print(LGraph Graph)
     }
 }
 
-// here are some util function which used to do some trick works.
-// data extract
-std::vector<std::string> data_extract(std::string file_path);
+// here are some util function which used to do some trick works.（这里有一些实用函数，用来做一些特技。）
+// data extract （数据提取）
+std::vector<std::string> data_extract(std::string file_path);  //  file path (文件路径) vector（可变大小的数组）
+//std::string是标准C++的字符串实现 (如果我们使用名空间std中的类，为了防止和其他的类库名称冲突，就需要在程序中加入语句：using namespace std )
 // hanming
-int hanming_distance(std::string string1, std::string string2);
+int hanming_distance(std::string string1, std::string string2);  //定义汉明距离，字符串1，字符串2.
 
 int main()
 {
     //data extract
-    std::vector<std::string> data = data_extract(FILE_PATH);
+    std::vector<std::string> data = data_extract(FILE_PATH);  //  取值操作。
 
-    // test output
+    // test output (测试输出)
     std::string test1 = data[0];
     std::string test2 = data[1];
     int index = 1;
-    for (auto & i : data){
-        std::cout << index << " " << i << std::endl;
+    for (auto & i : data){  // 此份为两部分，冒号前部分是，i的适应性变量类型，eg--若i=1 ，则auto的类型就是整型变量，冒号后部分是i的变化的范围
+        std::cout << index << " " << i << std::endl;  //输出 指数 和 i 。
         index ++;
     }
 
     std::cout << "the hanming distance of the test1 and test2 is: " << hanming_distance(test1, test2) << std::endl;
+//输出测试1和测试2的汉明距离
 
     LGraph Graph;
 
@@ -172,31 +174,31 @@ int main()
     return 0;
 }
 
-std::vector<std::string> data_extract(std::string file_path) {
-    std::string temp;
-    std::vector<std::string> data;
-    std::ifstream file(file_path);
-    while (getline(file, temp)){
-        data.push_back(temp);
+std::vector<std::string> data_extract(std::string file_path) {  //数据提取。
+    std::string temp;  //定义临时变量 （换数思想）
+    std::vector<std::string> data;   // 提取数据。
+    std::ifstream file(file_path);   // 已输入的方式打开文件
+    while (getline(file, temp)){  // 获取文件中的字符串和定义temp的字符串。
+        data.push_back(temp); // 数据返回。
     }
     return data;
 }
 
-int hanming_distance(std::string string1, std::string string2)
+int hanming_distance(std::string string1, std::string string2) // 定义汉明距离 字符串1，字符串2.
 {
     int sum = 0,n = 0;
-    if  (string1.length() == string2.length())
+    if  (string1.length() == string2.length())  //若字符串1的长度等于字符串2的长度，
     {
-        for (int i = 0; i < string1.length(); i++)
+        for (int i = 0; i < string1.length(); i++) //定义i，循环字符串1的长度，
         {
             if (string1.substr(i,n+1) != string2.substr(i,n+1))
-                ++ sum;
+                ++ sum;  // 若字符串1和字符串2每有一个字符不同，则sum数值加一。
         }
         return sum;
     }
     else{
-        std::cout<< string1.length() << std::endl << string2.length() << std::endl;
-        std::cout<< "The length of the strings are not equivalence." << std::endl;
+        std::cout<< string1.length() << std::endl << string2.length() << std::endl; // 输出字符串1 然后换行输出字符串2.
+        std::cout<< "The length of the strings are not equivalence." << std::endl; //  输出长度不等的字符串。
         return 0;
     }
 }
