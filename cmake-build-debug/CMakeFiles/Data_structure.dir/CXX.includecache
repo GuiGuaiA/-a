@@ -7,7 +7,7 @@
 #IncludeRegexTransform: 
 
 E:/ClionProject/Data_structure/main.cpp
-stdio.h
+cstdio
 -
 stdlib.h
 -
